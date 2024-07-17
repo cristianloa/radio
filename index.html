@@ -2,21 +2,56 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Radio App</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <h1>Radio App</h1>
-  <div id="stations-list">
-    <!-- Las estaciones de radio se listarán aquí -->
-  </div>
-  <div id="player-container">
-    <h2>Reproduciendo: <span id="station-name">Ninguna estación seleccionada</span></h2>
-    <audio controls id="audio-player">
-      <source id="audio-source" src="" type="audio/mpeg">
-      Tu navegador no soporta el elemento de audio.
-    </audio>
+  <div class="container">
+    <header>
+      <h1>Radio App</h1>
+      <nav>
+        <div class="menu-icon" id="menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul id="menu">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Estaciones</a></li>
+          <li><a href="#">Acerca de</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="content">
+        <h2>Lista de Estaciones</h2>
+        <div id="stations-list">
+          <!-- Las estaciones de radio se listarán aquí -->
+        </div>
+      </section>
+      <aside id="sidebar">
+        <div id="player-container">
+          <h2>Reproduciendo: <span id="station-name">Ninguna estación seleccionada</span></h2>
+          <audio controls id="audio-player">
+            <source id="audio-source" src="" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+          </audio>
+        </div>
+      </aside>
+    </main>
+    <footer>
+      <p>&copy; 2024 Radio App. Todos los derechos reservados.</p>
+    </footer>
   </div>
   <script src="js/app.js"></script>
+  <script>
+    document.getElementById('menu-icon').addEventListener('click', function() {
+      var menu = document.getElementById('menu');
+      menu.classList.toggle('active');
+      this.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>
