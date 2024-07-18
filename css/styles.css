@@ -6,21 +6,18 @@ body {
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 header {
   background-color: #007bff;
   color: white;
   padding: 20px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  justify-content: center;
   align-items: center;
-  position: relative;
 }
 
 header h1 {
@@ -38,6 +35,7 @@ nav ul {
 
 nav ul li {
   margin: 0 15px;
+  border-bottom: 1px solid #559fee;
 }
 
 nav ul li a {
@@ -67,7 +65,7 @@ nav ul li a {
 }
 
 .menu-icon.open span:nth-child(1) {
-  transform: translateY(14px) rotate(45deg);
+  transform: translateY(7px) rotate(45deg);
 }
 
 .menu-icon.open span:nth-child(2) {
@@ -75,17 +73,22 @@ nav ul li a {
 }
 
 .menu-icon.open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+  transform: translateY(-14px) rotate(-45deg);
 }
 
 main {
+  flex: 1;
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 20px;
   padding: 20px;
 }
 
-#content {
+main section {
+  margin: 0 10px;
+}
+
+#content, #about, #contact {
   grid-column: 1;
 }
 
@@ -93,7 +96,9 @@ main {
   grid-column: 2;
   background-color: #ff0000; /* Color rojo */
 }
-
+#stations {
+  text-align: center;
+}
 #stations-list {
   display: flex;
   flex-direction: column;
@@ -101,12 +106,15 @@ main {
 }
 
 #stations-list div {
+  display: grid;
+    grid-template-columns: 1fr 25%;
+    align-items: center;
   margin: 10px;
   padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 10px;
   width: 100%;
-  max-width: 90%;
+  max-width: 300px;
 }
 
 #stations-list h3 {
@@ -115,17 +123,21 @@ main {
 
 #stations-list button {
   display: inline-block;
-  margin-top: 10px;
   padding: 5px 10px;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
 #stations-list button:hover {
   background-color: #0056b3;
+}
+
+#stations-list button::before {
+  content: '▶ ';
+  font-size: 25px;
 }
 
 #player-container {
@@ -142,10 +154,41 @@ footer {
   padding: 10px;
   text-align: center;
   position: relative;
+  margin-top: auto;
 }
 
 footer p {
   margin: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form label {
+  margin-top: 10px;
+}
+
+form input, form textarea {
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+form input[type="submit"] {
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: #0056b3;
 }
 
 @media (max-width: 768px) {
@@ -155,11 +198,10 @@ footer p {
     width: 100%;
     z-index: 1000;
     padding: 20px 3px;
+    box-sizing: border-box;
   }
 
   .container {
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: 1fr;
     padding-top: 60px; /* Altura del header */
   }
 
@@ -174,6 +216,8 @@ footer p {
   nav ul.active {
     max-height: 200px;
     margin-top: 35px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 5px;
   }
 
   .menu-icon {
@@ -183,10 +227,14 @@ footer p {
   main {
     grid-template-columns: 1fr;
     padding: 0;
+    margin-top: 25px;
   }
 
   #stations-list div {
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 25%;
+    align-items: center;
   }
 
   #sidebar {
@@ -201,9 +249,91 @@ footer p {
   #player-container {
     margin-top: 0;
     width: 100%;
+    box-sizing: border-box;
   }
 
   footer {
-    margin-bottom: 112px; /* Altura aproximada del reproductor para evitar que lo tape */
-  }
+    margin: 15px 0 61px 0;
+    }
+}
+
+
+
+
+
+
+
+
+#player-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 100;
+}
+
+#player-container h2 {
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+  color: #333;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#station-name {
+  font-weight: bold;
+  color: #007bff;
+  display: block;
+}
+
+#audio-player {
+  width: 150px;
+  max-width: 150px;
+}
+
+#audio-player::-webkit-media-controls-panel {
+  background-color: #ffffff;
+  border-radius: 0;
+}
+
+#audio-player::-webkit-media-controls-play-button,
+#audio-player::-webkit-media-controls-pause-button {
+  color: #007bff;
+}
+
+#audio-player::-webkit-media-controls-mute-button,
+#audio-player::-webkit-media-controls-unmute-button {
+  display: none;
+}
+
+#audio-player::-webkit-media-controls-timeline {
+  background-color: #f4f4f4;
+  height: 2px;
+  border-radius: 1px;
+}
+
+#audio-player::-webkit-media-controls-current-time-display,
+#audio-player::-webkit-media-controls-time-remaining-display {
+  display: none;
+}
+
+#audio-player {
+  outline: none;
+  background: #007bff;
+    background-color: rgb(0, 123, 255);
+  -webkit-appearance: none;
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  background-color: #007bff;
+}
+
+#audio-source {
+  display: none;
 }
