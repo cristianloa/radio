@@ -11,9 +11,12 @@ body {
   margin: 0 auto;
   padding: 0;
 }
-
-
 #header .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#header  {
   background-color: #007bff;
   color: white;
   padding: 20px;
