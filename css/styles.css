@@ -6,21 +6,29 @@ body {
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
 }
 
-header {
+
+#header .container {
   background-color: #007bff;
   color: white;
   padding: 20px;
   display: grid;
+  grid-template-columns: 1fr auto;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
 }
 
-header h1 {
+#header h1 {
   margin: 0;
 }
 
@@ -76,17 +84,15 @@ nav ul li a {
   transform: translateY(-14px) rotate(-45deg);
 }
 
-main {
+#main .container {
   flex: 1;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 20px;
+  grid-gap: 1rem;
   padding: 20px;
+  margin-top: 7rem;
 }
 
-main section {
-  margin: 0 10px;
-}
 
 #content, #about, #contact {
   grid-column: 1;
@@ -94,7 +100,6 @@ main section {
 
 #sidebar {
   grid-column: 2;
-  background-color: #ff0000; /* Color rojo */
 }
 #stations {
   text-align: center;
@@ -103,18 +108,19 @@ main section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
 }
 
 #stations-list div {
   display: grid;
     grid-template-columns: 1fr 25%;
     align-items: center;
-  margin: 10px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 10px;
-  width: 100%;
-  max-width: 300px;
+
 }
 
 #stations-list h3 {
@@ -144,11 +150,35 @@ main section {
   margin-top: 20px;
 }
 
+#player-container {
+  display: block;
+  text-align: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  z-index: 100;
+}
+#player-container h2 {
+
+  font-size: 25px;
+  font-weight: normal;
+  margin: 0;
+  margin-bottom: 1rem;
+  color: #333;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 #audio-player {
   width: 100%;
 }
 
-footer {
+#footer {
   background-color: #007bff;
   color: white;
   padding: 10px;
@@ -157,7 +187,7 @@ footer {
   margin-top: auto;
 }
 
-footer p {
+#footer p {
   margin: 0;
 }
 
@@ -190,20 +220,30 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
   background-color: #0056b3;
 }
+/*****************************/
+/*****************************/
+/*****************************/
+/*********RESPONSIVE**********/
+/*****************************/
+/*****************************/
+/*****************************/
+
 
 @media (max-width: 768px) {
-  header {
+  #header {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     padding: 20px 3px;
     box-sizing: border-box;
+    left: -3px;
+  }
+  #header .container {
+    display: block;
   }
 
-  .container {
-    padding-top: 60px; /* Altura del header */
-  }
+
 
   nav ul {
     flex-direction: column;
@@ -224,26 +264,33 @@ form input[type="submit"]:hover {
     display: flex;
   }
 
-  main {
+  #main {
     grid-template-columns: 1fr;
     padding: 0;
     margin-top: 25px;
   }
 
+  #main .container {
+    grid-template-columns: 1fr;
+    margin-top: 4rem;
+    
+  }
+
   #stations-list div {
-    width: 100%;
     display: grid;
     grid-template-columns: 1fr 25%;
     align-items: center;
+    padding: 5px;
+    
   }
 
   #sidebar {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #ff0000; /* Color rojo */
     padding: 0;
     z-index: 10;
+    left: 0;
   }
 
   #player-container {
@@ -255,37 +302,31 @@ form input[type="submit"]:hover {
   footer {
     margin: 15px 0 61px 0;
     }
+    #player-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: #ffffff;
+      border-top: 1px solid #e0e0e0;
+      box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 100;
+    }
+    
+    #player-container h2 {
+      font-size: 14px;
+      font-weight: normal;
+      margin: 0;
+      color: #333;
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 }
 
-
-
-
-
-
-
-
-#player-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  background-color: #ffffff;
-  border-top: 1px solid #e0e0e0;
-  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 100;
-}
-
-#player-container h2 {
-  font-size: 14px;
-  font-weight: normal;
-  margin: 0;
-  color: #333;
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+/*end responsive*/
 
 #station-name {
   font-weight: bold;
