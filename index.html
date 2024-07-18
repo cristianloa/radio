@@ -17,19 +17,45 @@
           <span></span>
         </div>
         <ul id="menu">
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Estaciones</a></li>
-          <li><a href="#">Acerca de</a></li>
-          <li><a href="#">Contacto</a></li>
+          <li><a href="#stations">Inicio</a></li>
+          <li><a href="#about">Acerca de</a></li>
+          <li><a href="#contact">Contacto</a></li>
         </ul>
       </nav>
     </header>
     <main>
-      <section id="content">
+      <section id="stations">
         <h2>Lista de Estaciones</h2>
         <div id="stations-list">
           <!-- Las estaciones de radio se listarán aquí -->
         </div>
+      </section>
+      <section id="about">
+        <h2>Acerca de</h2>
+        <p>Mi nombre es Cristian Loaiza Huallpa y soy el creador de esta aplicación de radio. Esta aplicación permite a los usuarios escuchar sus estaciones de radio favoritas en línea de manera sencilla y accesible. Puedes conocer más sobre mí y mi experiencia profesional visitando mi <a href="https://www.linkedin.com/in/cristianloaizahuallpa" target="_blank">perfil de LinkedIn</a>.</p>
+      </section>
+      <section id="contact">
+        <h2>Contacto</h2>
+        <p>Si deseas ponerte en contacto conmigo, puedes utilizar la siguiente información o completar el formulario de contacto.</p>
+        <ul>
+          <li>Nombre: Cristian Loaiza Huallpa</li>
+          <li>Correo: <a href="mailto:cristianloaizahuallpa@gmail.com">cristianloaizahuallpa@gmail.com</a></li>
+          <li>WhatsApp: <a href="https://wa.me/51927898835" target="_blank">+51 927 898 835</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/cristianloaizahuallpa" target="_blank">Cristian Loaiza Huallpa</a></li>
+        </ul>
+        <form action="mailto:cristianloaizahuallpa@gmail.com" method="post" enctype="text/plain">
+          <label for="fname">Nombre:</label>
+          <input type="text" id="fname" name="nombre" required>
+          <label for="lname">Apellido:</label>
+          <input type="text" id="lname" name="apellido" required>
+          <label for="email">Correo Electrónico:</label>
+          <input type="email" id="email" name="correo" required>
+          <label for="phone">Número de WhatsApp:</label>
+          <input type="tel" id="phone" name="whatsapp" required>
+          <label for="message">Descripción o Mensaje:</label>
+          <textarea id="message" name="mensaje" required></textarea>
+          <input type="submit" value="Enviar">
+        </form>
       </section>
       <aside id="sidebar">
         <div id="player-container">
