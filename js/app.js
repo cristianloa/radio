@@ -22,12 +22,13 @@ document.addEventListener('DOMContentLoaded', function() {
     { name: 'Radio Mega Stereo', url: 'https://cast1.my-control-panel.com/proxy/megaestereo/stream' },
     { name: 'Radio Coca Raymi', url: 'https://stream.zeno.fm/di4yvkfirz0vv' },
     { name: 'Radio Naranjal', url: 'https://encrypted-vtbn0.gstatic.com/video?q=tbn:ANd9GcQWpGaVlXuYDfjm5y3PdJCtZ-eZN_LOlDelgA' },
-    { name: 'Radio ', url: 'https' },
+    { name: 'Radio ', url: 'https://mdstrm.com/audio/6839e28eb3fdc597ac2e2e43/icecast.audio
+' },
     { name: 'Radio ', url: 'https' },
 
     { "name": "Radio 1", "url": "https://rugby-mad-nokia-admitted.trycloudflare.com/stream?1718287105538" },
     { "name": "Radio 2", "url": "https://panelautodj.innovatestream.pe:10951" },
-    { "name": "Radio 3", "url": "https://radioz.egostreaming.pe/radio/3e4f6a1b2c3d4e567890abcd/" },
+    { "name": "Radio Magica", "url": "https://radioz.egostreaming.pe/radio/3e4f6a1b2c3d4e567890abcd/" },
     { "name": "Radio 4", "url": "https://stream.zeno.fm/5115vsdnnnruv" },
     { "name": "Radio 5", "url": "https://stream.zeno.fm/tk4wmqvnnnruv" },
     { "name": "Radio 6", "url": "https://mpc1.mediacp.eu:8952" },
