@@ -22,8 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     { name: 'Radio Mega Stereo', url: 'https://cast1.my-control-panel.com/proxy/megaestereo/stream' },
     { name: 'Radio Coca Raymi', url: 'https://stream.zeno.fm/di4yvkfirz0vv' },
     { name: 'Radio Naranjal', url: 'https://encrypted-vtbn0.gstatic.com/video?q=tbn:ANd9GcQWpGaVlXuYDfjm5y3PdJCtZ-eZN_LOlDelgA' },
-    { name: 'Radio ', url: 'https://mdstrm.com/audio/6839e28eb3fdc597ac2e2e43/icecast.audio
-' },
+    { name: 'Radio m', url: 'https://mdstrm.com/audio/6839e28eb3fdc597ac2e2e43/icecast.audio' },
     { name: 'Radio ', url: 'https' },
 
     { "name": "Radio 1", "url": "https://rugby-mad-nokia-admitted.trycloudflare.com/stream?1718287105538" },
