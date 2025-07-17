@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   const stationsList = [
     { name: 'Radio Oxígeno', url: 'https://mdstrm.com/audio/5fab0687bcd6c2389ee9480c/icecast.audio' },
-    { name: 'Radio Magica', url: 'https://mdstrm.com/audio/6839e28eb3fdc597ac2e2e43/icecast.audio?property=aiir&_=224873' },
+    { name: "Radio Magica", "url": 'https://mdstrm.com/audio/6839e28eb3fdc597ac2e2e43/icecast.audio?property=aiir&_=224873' },
     { name: 'Radio Felicidad', url: 'https://mdstrm.com/audio/5fad731fcf097a068af3c8f7/icecast.audio' },
     { name: 'Radio RPP', url: 'https://mdstrm.com/audio/5fab3416b5f9ef165cfab6e9/icecast.audio' },
     { name: 'Radio Exitosa', url: 'https://stream.zeno.fm/csy4vzackf9uv' },
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     { name: 'Radio Planeta', url: 'https://mdstrm.com/audio/6839e274f40e6b9832e37633/icecast.audio?property=aiir&_=481938' },
     { name: 'Radio Onda Cero', url: 'https://mdstrm.com/audio/6598b65ab398c90871aff8cc/icecast.audio' },
     { name: 'Radio Z Rock & Pop', url: 'https://radioz.egostreaming.pe/radio/3e4f6a1b2c3d4e567890abcd/' },
-    { name: 'Radio Studio 92', url: 'https://mdstrm.com/audio/6598b65ab398c90871aff8cc/icecast.audio' }, // URL corregida como ejemplo
+    { name: 'Radio Studio 92', url: 'https://gcdn.2mdn.net/videoplayback/id/0751c120d4c7c8a1/itag/345/source/web_video_ads/xpc/EgVovf3BOg%3D%3D/ctier/L/acao/yes/ip/0.0.0.0/ipbits/0/expire/1752812287/sparams/ip,ipbits,expire,id,itag,source,xpc,ctier,acao/signature/36B65E93093AE4B3E88C9C65B223187B837A084D.3E4DFCA2EC3288AF4DF879EDD389CCBEBE88331C/key/ck2/file/file.mp4' },
     { name: 'Radio Moda', url: 'https://14613.live.streamtheworld.com/CRP_MOD_SC?csegid=30008&dist=30008' },
     { name: 'Radio Exitoso', url: 'https://neptuno-2-audio.mediaserver.digital/79525baf-b0f5-4013-a8bd-3c5c293c6561' },
     { name: 'Radio Oasis', url: 'https://stream.zeno.fm/3bhmjhlsl0wvv' },
@@ -22,6 +22,14 @@ document.addEventListener('DOMContentLoaded', function() {
     { name: 'Radio Salkantay', url: 'http://167.114.118.119:7662/stream' },
     { name: 'Radio Mega Stereo', url: 'https://cast1.my-control-panel.com/proxy/megaestereo/stream' },
     { name: 'Radio Coca Raymi', url: 'https://stream.zeno.fm/di4yvkfirz0vv' },
+    { name: 'Radio Naranjal', url: 'https://encrypted-vtbn0.gstatic.com/video?q=tbn1GcQWpGaVlXuYDfjm5y3PdJCtZ-eZN_LOlDelgA' },
+    { name: 'Radio 1', url: 'https' },
+    { name: 'Radio 2', url: 'https' },
+
+    { "name": "Radio 1", "url": "https://rugby-mad-nokia-admitted.trycloudflare.com/stream?1718287105538" },
+    { "name": "Radio 2", "url": "https://panelautodj.innovatestream.pe:10951" },
+    
+
   ];
 
   const stationsContainer = document.getElementById('stations-list');
@@ -33,9 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const stationElement = document.createElement('div');
     stationElement.innerHTML = `
       <h3>${station.name}</h3>
-      <button onclick="playStation('${station.name}', '${station.url}')" aria-label="Reproducir ${station.name}">
-        Reproducir <span class="play-icon">▶</span>
-      </button>
+      <button onclick="playStation('${station.name}', '${station.url}')"></button>
     `;
     stationsContainer.appendChild(stationElement);
   });
@@ -44,33 +50,21 @@ document.addEventListener('DOMContentLoaded', function() {
     stationNameElement.innerText = name;
     audioSourceElement.src = url;
     audioPlayerElement.load();
-    audioPlayerElement.play().catch(() => {
-      stationNameElement.innerText = 'Error al reproducir la estación';
-      alert('No se pudo cargar la estación. Por favor, intenta con otra.');
-    });
+    audioPlayerElement.play();
   };
-
-  audioPlayerElement.addEventListener('error', () => {
-    stationNameElement.innerText = 'Error al reproducir la estación';
-    alert('No se pudo cargar la estación. Por favor, intenta con otra.');
-  });
 
   // Theme toggle functionality
   const themeToggle = document.getElementById('theme-toggle');
-  const themeIcon = themeToggle.querySelector('.theme-icon');
   const currentTheme = localStorage.getItem('theme') || 'light';
-  
   if (currentTheme === 'dark') {
     document.body.classList.add('dark-theme');
-    themeIcon.textContent = '☀️';
-  } else {
-    themeIcon.textContent = '🌙';
+    themeToggle.querySelector('.theme-icon').textContent = '☀️';
   }
 
   themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-theme');
-    const isDark = document.body.classList.contains('dark-theme');
-    themeIcon.textContent = isDark ? '☀️' : '🌙';
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    const theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+    themeToggle.querySelector('.theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
   });
 });
