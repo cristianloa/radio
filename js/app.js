@@ -34,20 +34,28 @@ document.addEventListener('DOMContentLoaded', function() {
   const audioSourceElement = document.getElementById('audio-source');
   const audioPlayerElement = document.getElementById('audio-player');
 
-  stationsList.forEach(station => {
+  stationsList.forEach((station, index) => {
     const stationElement = document.createElement('div');
     stationElement.innerHTML = `
       <h3>${station.name}</h3>
       <button onclick="playStation('${station.name}', '${station.url}')"></button>
     `;
+    stationElement.classList.add('fade-in');
+    stationElement.style.animationDelay = `${index * 0.1}s`;
     stationsContainer.appendChild(stationElement);
   });
 
   window.playStation = function(name, url) {
-    stationNameElement.innerText = name;
+    const playerContainer = document.getElementById('player-container');
+    playerContainer.classList.add('loading');
+    stationNameElement.innerText = 'Cargando...';
     audioSourceElement.src = url;
     audioPlayerElement.load();
-    audioPlayerElement.play();
+    audioPlayerElement.play().finally(() => {
+      playerContainer.classList.remove('loading');
+      stationNameElement.innerText = name;
+      stationNameElement.classList.add('playing');
+    });
   };
 
   // Theme toggle functionality
