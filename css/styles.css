@@ -11,6 +11,10 @@ body.dark-theme {
   color: #e0e0e0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -25,7 +29,7 @@ body.dark-theme {
 }
 
 #header {
-  background-color: #007bff;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
   color: white;
   padding: 20px;
   position: fixed;
@@ -36,7 +40,7 @@ body.dark-theme {
 }
 
 body.dark-theme #header {
-  background: #003087;
+  background: linear-gradient(135deg, #003087 0%, #001f4d 100%);
 }
 
 .logo-container {
@@ -121,16 +125,32 @@ body.dark-theme .menu-icon span {
 }
 
 #theme-toggle {
-  background: none;
+  background: rgba(255, 255, 255, 0.2);
   border: none;
   cursor: pointer;
   color: white;
   font-size: 18px;
-  padding: 10px;
+  padding: 8px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+#theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 body.dark-theme #theme-toggle {
   color: #e0e0e0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme #theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 #main .container {
@@ -155,9 +175,6 @@ body.dark-theme #theme-toggle {
 }
 
 #stations-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
@@ -170,11 +187,21 @@ body.dark-theme #theme-toggle {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 10px;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#stations-list div:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
 }
 
 body.dark-theme #stations-list div {
   border: 1px solid #444;
   background-color: #2a2a2a;
+}
+
+body.dark-theme #stations-list div:hover {
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
 }
 
 #stations-list h3 {
@@ -193,6 +220,7 @@ body.dark-theme #stations-list h3 {
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 body.dark-theme #stations-list button {
@@ -216,18 +244,30 @@ body.dark-theme #stations-list button:hover {
   margin-top: 20px;
   display: block;
   text-align: center;
-  justify-content: space-between;
   padding: 10px 20px;
-  background-color: #ffffff;
+  background: linear-gradient(135deg, #ffffff 0%, #f4f4f4 100%);
   border-top: 1px solid #e0e0e0;
-  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
   position: fixed;
   z-index: 100;
+  border-radius: 10px 10px 0 0;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 body.dark-theme #player-container {
-  background-color: #2a2a2a;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
   border-top: 1px solid #444;
+}
+
+#player-container.loading #station-name::after {
+  content: '...';
+  animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+  0% { content: '.'; }
+  33% { content: '..'; }
+  66% { content: '...'; }
 }
 
 #player-container h2 {
@@ -255,6 +295,7 @@ body.dark-theme #player-container h2 {
   -webkit-appearance: none;
   border: 2px solid #007bff;
   border-radius: 10px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 body.dark-theme #audio-player {
@@ -263,7 +304,7 @@ body.dark-theme #audio-player {
 }
 
 #footer {
-  background-color: #007bff;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
   color: white;
   padding: 10px;
   text-align: center;
@@ -272,7 +313,7 @@ body.dark-theme #audio-player {
 }
 
 body.dark-theme #footer {
-  background-color: #003087;
+  background: linear-gradient(135deg, #003087 0%, #001f4d 100%);
 }
 
 #footer p {
@@ -299,6 +340,7 @@ form input, form textarea {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 body.dark-theme form input, body.dark-theme form textarea {
@@ -313,6 +355,7 @@ form input[type="submit"] {
   color: white;
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 body.dark-theme form input[type="submit"] {
@@ -369,6 +412,9 @@ body.dark-theme form input[type="submit"]:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease, transform 0.3s ease;
   }
 
   body.dark-theme nav ul {
@@ -377,10 +423,11 @@ body.dark-theme form input[type="submit"]:hover {
 
   nav ul.active {
     max-height: 200px;
-    margin-top: 0;
     padding: 10px 0;
     border: none;
     border-radius: 0;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   body.dark-theme nav ul.active {
@@ -428,15 +475,16 @@ body.dark-theme form input[type="submit"]:hover {
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    background-color: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #f4f4f4 100%);
     border-top: 1px solid #e0e0e0;
-    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 100;
+    border-radius: 10px 10px 0 0;
   }
 
   body.dark-theme #player-container {
-    background-color: #2a2a2a;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
     border-top: 1px solid #444;
   }
 
@@ -466,6 +514,16 @@ body.dark-theme #station-name {
   color: #66b0ff;
 }
 
+#station-name.playing {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
 #audio-player {
   width: 150px;
   max-width: 150px;
@@ -475,6 +533,7 @@ body.dark-theme #station-name {
   -webkit-appearance: none;
   border: 2px solid #007bff;
   border-radius: 10px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 body.dark-theme #audio-player {
@@ -523,4 +582,14 @@ body.dark-theme #audio-player::-webkit-media-controls-timeline {
 
 #audio-source {
   display: none;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
