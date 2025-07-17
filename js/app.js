@@ -22,14 +22,11 @@ document.addEventListener('DOMContentLoaded', function() {
     { name: 'Radio Salkantay', url: 'http://167.114.118.119:7662/stream' },
     { name: 'Radio Mega Stereo', url: 'https://cast1.my-control-panel.com/proxy/megaestereo/stream' },
     { name: 'Radio Coca Raymi', url: 'https://stream.zeno.fm/di4yvkfirz0vv' },
-    { name: 'Radio Naranjal', url: 'https://encrypted-vtbn0.gstatic.com/video?q=1GcQWpGaVlXuYDfjm5y3PdJCtZ-eZN_LOlDelgA' },
+    { name: 'Radio Naranjal', url: 'https://encrypted-vtbn0.gstatic.com/video?q=tbn1GcQWpGaVlXuYDfjm5y3PdJCtZ-eZN_LOlDelgA' },
     { name: 'Radio 1', url: 'https' },
     { name: 'Radio 2', url: 'https' },
-
     { "name": "Radio 1", "url": "https://rugby-mad-nokia-admitted.trycloudflare.com/stream?1718287105538" },
-    { "name": "Radio 2", "url": "https://panelautodj.innovatestream.pe:10951" },
-    
-
+    { "name": "Radio 2", "url": "https://panelautodj.innovatestream.pe:10951" }
   ];
 
   const stationsContainer = document.getElementById('stations-list');
