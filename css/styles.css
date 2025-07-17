@@ -45,6 +45,10 @@ body.dark-theme #header {
   margin: 0;
 }
 
+nav {
+  position: relative;
+}
+
 nav ul {
   list-style: none;
   padding: 0;
@@ -324,7 +328,6 @@ body.dark-theme form input[type="submit"]:hover {
 /*****************************/
 /*****************************/
 
-
 @media (max-width: 768px) {
   #header {
     position: fixed;
@@ -364,6 +367,16 @@ body.dark-theme form input[type="submit"]:hover {
 
   .menu-icon {
     display: flex;
+    right: 60px; /* Ajustado para dejar espacio al botón de tema */
+  }
+
+  #theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100; /* Mayor que el header para estar encima */
+    padding: 5px;
+    font-size: 16px;
   }
 
   #main {
@@ -405,4 +418,95 @@ body.dark-theme form input[type="submit"]:hover {
     border-top: 1px solid #e0e0e0;
     box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
     position: relative;
+    z-index: 100;
   }
+
+  body.dark-theme #player-container {
+    background-color: #2a2a2a;
+    border-top: 1px solid #444;
+  }
+
+  #player-container h2 {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+    color: #333;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  body.dark-theme #player-container h2 {
+    color: #e0e0e0;
+  }
+}
+
+#station-name {
+  font-weight: bold;
+  color: #007bff;
+  display: block;
+}
+
+body.dark-theme #station-name {
+  color: #66b0ff;
+}
+
+#audio-player {
+  width: 150px;
+  max-width: 150px;
+  outline: none;
+  background: #007bff;
+  background-color: rgb(0, 123, 255);
+  -webkit-appearance: none;
+  border: 2px solid #007bff;
+  border-radius: 10px;
+}
+
+body.dark-theme #audio-player {
+  border: 2px solid #0056b3;
+  background-color: #0056b3;
+}
+
+#audio-player::-webkit-media-controls-panel {
+  background-color: #ffffff;
+  border-radius: 0;
+}
+
+body.dark-theme #audio-player::-webkit-media-controls-panel {
+  background-color: #2a2a2a;
+}
+
+#audio-player::-webkit-media-controls-play-button,
+#audio-player::-webkit-media-controls-pause-button {
+  color: #007bff;
+}
+
+body.dark-theme #audio-player::-webkit-media-controls-play-button,
+body.dark-theme #audio-player::-webkit-media-controls-pause-button {
+  color: #66b0ff;
+}
+
+#audio-player::-webkit-media-controls-mute-button,
+#audio-player::-webkit-media-controls-unmute-button {
+  display: none;
+}
+
+#audio-player::-webkit-media-controls-timeline {
+  background-color: #f4f4f4;
+  height: 2px;
+  border-radius: 1px;
+}
+
+body.dark-theme #audio-player::-webkit-media-controls-timeline {
+  background-color: #444;
+}
+
+#audio-player::-webkit-media-controls-current-time-display,
+#audio-player::-webkit-media-controls-time-remaining-display {
+  display: none;
+}
+
+#audio-source {
+  display: none;
+}
