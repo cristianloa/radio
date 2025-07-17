@@ -5,47 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Radio App</title>
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="icon" href="css/radioapp.png" type="image/png">
+   <link rel="icon" href="css/radioapp.png" type="image/x-icon">
 </head>
 <body>
-  <header id="header">
-    <div class="container">
-      <h1>Radio App</h1>
+  <div>
+    <header id="header">
+      <div class="container">
+        <h1>Radio App</h1>
       <nav>
-        <div class="menu-icon" id="menu-icon" role="button" aria-label="Toggle menu" tabindex="0">
+        <div class="menu-icon" id="menu-icon">
           <span></span>
           <span></span>
           <span></span>
         </div>
-        <ul id="menu" role="navigation">
-          <li><a href="#stations" aria-label="Ir a Inicio">Inicio</a></li>
-          <li><a href="#about" aria-label="Ir a Acerca de">Acerca de</a></li>
-          <li><a href="#contact" aria-label="Ir a Contacto">Contacto</a></li>
+        <ul id="menu">
+          <li><a href="#stations">Inicio</a></li>
+          <li><a href="#about">Acerca de</a></li>
+          <li><a href="#contact">Contacto</a></li>
           <li>
             <button id="theme-toggle" aria-label="Cambiar tema">
-              <span class="theme-icon">☀️</span>
+              <span class="theme-icon">🌙</span>
             </button>
           </li>
         </ul>
       </nav>
-    </div>
-  </header>
-  <main id="main">
-    <div class="container">
+      </div>
+      
+    </header>
+    <main id="main" >
+      <div  class="container">
+
+      
       <section id="stations">
         <h2>Lista de Estaciones</h2>
-        <div id="stations-list"></div>
-      </section>
-      <section id="about">
+        <div id="stations-list">
+          <!-- Las estaciones de radio se listarán aquí -->
+        </div>
+        <div id="about">
         <h2>Acerca de</h2>
         <p>Mi nombre es Cristian Loaiza Huallpa y soy el creador de esta aplicación de radio. Esta aplicación permite a los usuarios escuchar sus estaciones de radio favoritas en línea de manera sencilla y accesible. Puedes conocer más sobre mí y mi experiencia profesional visitando mi <a href="https://www.linkedin.com/in/cristianloaizahuallpa" target="_blank">perfil de LinkedIn</a>.</p>
-      </section>
-      <section id="contact">
+      </div>
+      <div id="contact">
         <h2>Contacto</h2>
         <p>Si deseas ponerte en contacto conmigo, puedes utilizar la siguiente información o completar el formulario de contacto.</p>
         <ul>
           <li>Nombre: Cristian Loaiza Huallpa</li>
-          <li>Correo: <a href="mailto:cristianloaizahuallpa@gmail.com ensayo">cristianloaizahuallpa@gmail.com</a></li>
+          <li>Correo: <a href="mailto:cristianloaizahuallpa@gmail.com">cristianloaizahuallpa@gmail.com</a></li>
           <li>WhatsApp: <a href="https://wa.me/51927898835" target="_blank">+51 927 898 835</a></li>
           <li>LinkedIn: <a href="https://www.linkedin.com/in/cristianloaizahuallpa" target="_blank">Cristian Loaiza Huallpa</a></li>
         </ul>
@@ -62,7 +67,10 @@
           <textarea id="message" name="mensaje" required></textarea>
           <input type="submit" value="Enviar">
         </form>
+      </div>
       </section>
+    
+      
       <aside id="sidebar">
         <div id="player-container">
           <h2>Reproduciendo: <span id="station-name">Selecciona Estación</span></h2>
@@ -73,24 +81,20 @@
         </div>
       </aside>
     </div>
-  </main>
-  <footer id="footer">
-    <div class="container">
-      <p>© 2024 Radio App. Todos los derechos reservados.</p>
-    </div>
-  </footer>
+    </main>
+    <footer id="footer"  >
+      <div class="container">
+        <p>© 2024 Radio App. Todos los derechos reservados.</p>
+      </div>
+      
+    </footer>
+  </div>
   <script src="js/app.js"></script>
   <script>
     document.getElementById('menu-icon').addEventListener('click', function() {
       var menu = document.getElementById('menu');
       menu.classList.toggle('active');
       this.classList.toggle('open');
-    });
-    document.getElementById('menu-icon').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        this.click();
-      }
     });
   </script>
 </body>
