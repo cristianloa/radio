@@ -508,16 +508,16 @@ body.dark-theme #audio-player::-webkit-media-controls-timeline {
     width: 54px;
     height: auto;
   }
+  .reproductor-spec {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 }
 .reproductor-spec {
-    display: flex
-;
-    justify-content
-Aligns flex items along the main axis of the current line of the flex container.
-Learn more
-
-Don't show
-: center;
+    display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
