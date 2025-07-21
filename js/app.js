@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   const stationsList = [
     { name: 'Radio Oxígeno', url: 'https://mdstrm.com/audio/5fab0687bcd6c2389ee9480c/icecast.audio' },
-    { name: "Radio Magica", "url": 'https://mdstrm.com/audio/6839e28eb3fdc597ac2e2e43/icecast.audio?property=aiir&_=224873' },
+    { name: "Radio Magica", url: 'https://mdstrm.com/audio/6839e28eb3fdc597ac2e2e43/icecast.audio?property=aiir&_=224873' },
     { name: 'Radio Felicidad', url: 'https://mdstrm.com/audio/5fad731fcf097a068af3c8f7/icecast.audio' },
     { name: 'Radio RPP', url: 'https://mdstrm.com/audio/5fab3416b5f9ef165cfab6e9/icecast.audio' },
     { name: 'Radio Exitosa', url: 'https://stream.zeno.fm/csy4vzackf9uv' },
@@ -33,6 +33,54 @@ document.addEventListener('DOMContentLoaded', function() {
   const stationNameElement = document.getElementById('station-name');
   const audioSourceElement = document.getElementById('audio-source');
   const audioPlayerElement = document.getElementById('audio-player');
+  const canvas = document.getElementById('audio-spectrum');
+  const canvasCtx = canvas.getContext('2d');
+  let isPlaying = false;
+  const barCount = 32;
+  const barHeights = new Array(barCount).fill(0);
+
+  function drawSpectrum() {
+    const width = canvas.width;
+    const height = canvas.height;
+    const centerX = width / 2;
+    const centerY = height / 2;
+    const radius = Math.min(width, height) / 4;
+    const barWidth = (Math.PI * 2) / barCount;
+
+    canvasCtx.clearRect(0, 0, width, height);
+
+    if (isPlaying) {
+      // Actualizar alturas de las barras aleatoriamente para simular movimiento
+      for (let i = 0; i < barCount; i++) {
+        barHeights[i] = Math.max(10, barHeights[i] + (Math.random() - 0.5) * 10);
+        barHeights[i] = Math.min(barHeights[i], radius * 0.5);
+      }
+    } else {
+      // Reducir alturas gradualmente cuando no está reproduciendo
+      for (let i = 0; i < barCount; i++) {
+        barHeights[i] = Math.max(0, barHeights[i] * 0.9);
+      }
+    }
+
+    // Dibujar barras circulares
+    for (let i = 0; i < barCount; i++) {
+      const radians = barWidth * i;
+      const barHeight = barHeights[i];
+      const x1 = centerX + Math.cos(radians) * radius;
+      const y1 = centerY + Math.sin(radians) * radius;
+      const x2 = centerX + Math.cos(radians) * (radius + barHeight);
+      const y2 = centerY + Math.sin(radians) * (radius + barHeight);
+
+      canvasCtx.beginPath();
+      canvasCtx.strokeStyle = document.body.classList.contains('dark-theme') ? '#66b0ff' : '#007bff';
+      canvasCtx.lineWidth = 2;
+      canvasCtx.moveTo(x1, y1);
+      canvasCtx.lineTo(x2, y2);
+      canvasCtx.stroke();
+    }
+
+    requestAnimationFrame(drawSpectrum);
+  }
 
   stationsList.forEach((station, index) => {
     const stationElement = document.createElement('div');
@@ -51,12 +99,37 @@ document.addEventListener('DOMContentLoaded', function() {
     stationNameElement.innerText = 'Cargando...';
     audioSourceElement.src = url;
     audioPlayerElement.load();
-    audioPlayerElement.play().finally(() => {
+    audioPlayerElement.play().then(() => {
       playerContainer.classList.remove('loading');
       stationNameElement.innerText = name;
       stationNameElement.classList.add('playing');
+      isPlaying = true;
+    }).catch(error => {
+      console.error('Error al reproducir:', error);
+      playerContainer.classList.remove('loading');
+      stationNameElement.innerText = 'Error al cargar';
+      isPlaying = false;
     });
   };
+
+  // Detectar cambios en el estado de reproducción
+  audioPlayerElement.addEventListener('play', () => {
+    isPlaying = true;
+    stationNameElement.classList.add('playing');
+  });
+
+  audioPlayerElement.addEventListener('pause', () => {
+    isPlaying = false;
+    stationNameElement.classList.remove('playing');
+  });
+
+  audioPlayerElement.addEventListener('ended', () => {
+    isPlaying = false;
+    stationNameElement.classList.remove('playing');
+  });
+
+  // Iniciar animación del espectro
+  drawSpectrum();
 
   // Theme toggle functionality
   const themeToggle = document.getElementById('theme-toggle');
