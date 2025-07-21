@@ -508,6 +508,9 @@ body.dark-theme #audio-player::-webkit-media-controls-timeline {
     width: 54px;
     height: auto;
   }
+  #station-name {
+    display: contents;
+}
   .reproductor-spec {
     display: flex !important;
     align-items: strech !important;
