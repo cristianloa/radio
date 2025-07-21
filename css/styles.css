@@ -158,8 +158,8 @@ body.dark-theme #theme-toggle:hover {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-gap: 1rem;
-  padding: 20px;
-  margin-top: 7rem;
+  padding: 0 20px;
+  margin-top: 6rem;
 }
 
 #content, #about, #contact {
