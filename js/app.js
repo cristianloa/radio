@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   const stationsList = [
-    { name: 'Radio LOFI 24/7', url: 'https://ec3.yesstreaming.net:3755/stream' },
+    { name: 'LOFI 24/7', url: 'https://ec3.yesstreaming.net:3755/stream' },
     { name: 'Radio Oxígeno', url: 'https://mdstrm.com/audio/5fab0687bcd6c2389ee9480c/icecast.audio' },
     { name: "Radio Magica", url: 'https://mdstrm.com/audio/6839e28eb3fdc597ac2e2e43/icecast.audio?property=aiir&_=224873' },
     { name: 'Radio Felicidad', url: 'https://mdstrm.com/audio/5fad731fcf097a068af3c8f7/icecast.audio' },
