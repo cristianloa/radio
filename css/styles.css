@@ -291,8 +291,8 @@ body.dark-theme #player-container h2 {
 }
 
 #audio-player {
-  width: 150px;
-  max-width: 150px;
+  //width: 200px;
+  max-width: 75%;
   outline: none;
   background: #007bff;
   background-color: rgb(0, 123, 255);
@@ -504,7 +504,8 @@ body.dark-theme #audio-player::-webkit-media-controls-timeline {
   }
 
   #audio-spectrum {
+    max-width: 23%;
     width: 54px;
-    height: 54px;
+    height: auto;
   }
 }
