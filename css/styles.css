@@ -509,9 +509,9 @@ body.dark-theme #audio-player::-webkit-media-controls-timeline {
     height: auto;
   }
   .reproductor-spec {
-    display: flex;
-    align-items: strech;
-    flex-direction: row;
+    display: flex !important;
+    align-items: strech !important;
+    flex-direction: row !important;
 }
 }
 .reproductor-spec {
