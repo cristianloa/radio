@@ -128,6 +128,16 @@ document.addEventListener('DOMContentLoaded', function() {
     stationNameElement.classList.remove('playing');
   });
 
+  // Ajustar tamaño del canvas dinámicamente
+  function resizeCanvas() {
+    const playerWidth = audioPlayerElement.offsetWidth;
+    canvas.width = playerWidth;
+    canvas.height = playerWidth;
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
   // Iniciar animación del espectro
   drawSpectrum();
 
