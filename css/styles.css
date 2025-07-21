@@ -241,7 +241,7 @@ body.dark-theme #stations-list button:hover {
 }
 
 #player-container {
-  margin-top: 20px;
+  margin-top: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
