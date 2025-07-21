@@ -504,7 +504,7 @@ body.dark-theme #audio-player::-webkit-media-controls-timeline {
   }
 
   #audio-spectrum {
-    width: 150px;
-    height: 150px;
+    width: 54px;
+    height: 54px;
   }
 }
