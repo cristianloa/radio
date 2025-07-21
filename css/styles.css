@@ -245,7 +245,7 @@ body.dark-theme #stations-list button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   background: linear-gradient(135deg, #ffffff 0%, #f4f4f4 100%);
   border-top: 1px solid #e0e0e0;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
@@ -286,8 +286,8 @@ body.dark-theme #player-container h2 {
 }
 
 #audio-spectrum {
-  max-width: 100%;
-  height: auto;
+  width: 150px;
+  height: 150px;
 }
 
 #audio-player {
@@ -477,7 +477,7 @@ body.dark-theme #audio-player::-webkit-media-controls-timeline {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px;
     background: linear-gradient(135deg, #ffffff 0%, #f4f4f4 100%);
     border-top: 1px solid #e0e0e0;
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
@@ -494,7 +494,7 @@ body.dark-theme #audio-player::-webkit-media-controls-timeline {
   #player-container h2 {
     font-size: 14px;
     font-weight: normal;
-    margin: 0 0 10px;
+    margin: 0 0 8px;
     color: #333;
     text-align: center;
   }
@@ -504,7 +504,7 @@ body.dark-theme #audio-player::-webkit-media-controls-timeline {
   }
 
   #audio-spectrum {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
   }
 }
