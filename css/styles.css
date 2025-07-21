@@ -507,7 +507,7 @@ body.dark-theme #audio-player::-webkit-media-controls-timeline {
     max-width: 23%;
     width: 54px;
     height: auto;
-    backgroun-color: #007bff1a;
+    backgroun: #007bff1a;
     border-radius: 50%;
   }
   #station-name {
